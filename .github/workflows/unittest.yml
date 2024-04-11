@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    name: Build
+    name: Unittest
     runs-on: ubuntu-latest
 
     steps:
