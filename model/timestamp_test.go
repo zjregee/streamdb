@@ -3,6 +3,7 @@ package model
 import (
 	"time"
 	"testing"
+	"github.com/stretchr/testify/require"
 )
 
 func TestFromTime(t *testing.T) {
@@ -16,9 +17,7 @@ func TestFromTime(t *testing.T) {
 
 	for _, tc := range testCases {
 		result := FromTime(tc.input)
-		if result != tc.expected {
-			t.Errorf("FromTime(%v) = %d; expected %d", tc.input, result, tc.expected)
-		}
+		require.Equal(t, tc.expected, result)
 	}
 }
 
@@ -33,9 +32,7 @@ func TestTime(t *testing.T) {
 
 	for _, tc := range testCases {
 		result := Time(tc.input)
-		if !result.Equal(tc.expected) {
-			t.Errorf("Time(%d) = %v; expected %v", tc.input, result, tc.expected)
-		}
+		require.Equal(t, tc.expected, result)
 	}
 }
 
@@ -50,8 +47,6 @@ func TestFromFloatSeconds(t *testing.T) {
 
 	for _, tc := range testCases {
 		result := FromFloatSeconds(tc.input)
-		if result != tc.expected {
-			t.Errorf("FromFloatSeconds(%f) = %d; expected %d", tc.input, result, tc.expected)
-		}
+		require.Equal(t, tc.expected, result)
 	}
 }
